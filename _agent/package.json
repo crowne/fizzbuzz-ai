@@ -1,0 +1,15 @@
+{
+  "name": "fizzbuzz-ai-agent",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "attractor": "link:attractor"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

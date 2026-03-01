@@ -31,28 +31,28 @@ func Divide(a, b float64) (float64, error) {
 }
 
 func main() {
-	if len(os.Args) < 4 {
+	if len(os.Args) != 4 {
 		fmt.Println("Usage: calc <number1> <operation> <number2>")
 		fmt.Println("Operations: +, -, *, /")
-		return
+		os.Exit(1)
 	}
 
-	num1, err1 := strconv.ParseFloat(os.Args[1], 64)
-	if err1 != nil {
-		fmt.Printf("Error parsing first number: %v\n", err1)
-		return
+	num1, err := strconv.ParseFloat(os.Args[1], 64)
+	if err != nil {
+		fmt.Printf("Error parsing first number: %v\n", err)
+		os.Exit(1)
 	}
 
 	operation := os.Args[2]
 
-	num2, err2 := strconv.ParseFloat(os.Args[3], 64)
-	if err2 != nil {
-		fmt.Printf("Error parsing second number: %v\n", err2)
-		return
+	num2, err := strconv.ParseFloat(os.Args[3], 64)
+	if err != nil {
+		fmt.Printf("Error parsing second number: %v\n", err)
+		os.Exit(1)
 	}
 
 	var result float64
-	var err error
+	var errResult error
 
 	switch operation {
 	case "+":
@@ -62,14 +62,14 @@ func main() {
 	case "*":
 		result = Multiply(num1, num2)
 	case "/":
-		result, err = Divide(num1, num2)
-		if err != nil {
-			fmt.Printf("Error: %v\n", err)
-			return
+		result, errResult = Divide(num1, num2)
+		if errResult != nil {
+			fmt.Printf("Error: %v\n", errResult)
+			os.Exit(1)
 		}
 	default:
 		fmt.Println("Invalid operation. Please use +, -, *, or /")
-		return
+		os.Exit(1)
 	}
 
 	fmt.Printf("Result: %v\n", result)

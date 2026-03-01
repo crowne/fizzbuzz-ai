@@ -5,10 +5,10 @@ async function main() {
 
   console.log("Agent starting");
 
+  // await hello.generate();
+
   await dotspec.generate("./_agent/specs/calc.dot");
 
-  // await hello.generate();
-  
 }
 
 main().catch(console.error);

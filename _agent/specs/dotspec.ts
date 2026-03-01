@@ -1,4 +1,4 @@
-import { Attractor } from "attractor";
+import { Attractor, createVerboseLogger } from "attractor";
 import { readFile } from "fs/promises";
 
 async function generate(filePath: string) {
@@ -10,6 +10,7 @@ async function generate(filePath: string) {
     dotSource: dotSource,
     provider: "ollama",
     model: "qwen3-coder:30b",   // must match a model you pulled in Step 2
+    onEvent: createVerboseLogger(),
   });
 
   const result = await attractor.run();

@@ -2,7 +2,8 @@ digraph pipeline {
     start      [shape=ellipse,       label="Start"]
     implement  [shape=box,           label="Implement feature",
                 prompt="Create a golang file cmd/calc.go with add, subtract, multiply, divide functions. Include input validation and error handling for division by zero."]
-    review     [shape=diamond,       label="Review"]
+    review     [shape=diamond,       label="Review"
+                prompt="Critique the code in cmd/calc.go . If it has add, subtract, multiply, and divide with error handling, reply ONLY with the word 'approved'. If anything is missing, reply ONLY with 'needs_work' followed by the reason."]
     done       [shape=doublecircle,  label="Done"]
 
     start -> implement -> review
